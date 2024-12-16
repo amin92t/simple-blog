@@ -14,14 +14,14 @@ require_once "../functions/helpers.php";
 </head>
 <body>
 <section id="app">
-<?php require_once "layouts/top-nav.html"; ?>
+<?php require_once "layouts/top-nav.php"; ?>
 
 
     <section class="container-fluid">
         <section class="row">
             
             <section class="col-md-2 p-0">
-            <?php require_once "layouts/sidebar.html"; ?>
+            <?php require_once "layouts/sidebar.php"; ?>
 
             </section>
             <section class="col-md-10 pb-3">
