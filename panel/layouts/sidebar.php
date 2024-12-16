@@ -7,6 +7,6 @@
         <a href="<?php echo url("/panel/category"); ?>">category</a>
     </section>
     <section class="sidebar-link">
-        <a href="">post</a>
+        <a href="<?php echo url("/panel/post"); ?>">post</a>
     </section>
 </section>
