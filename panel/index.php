@@ -2,6 +2,10 @@
 
 require_once "../functions/helpers.php";
 
+require_once "../auth/check-login.php";
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
