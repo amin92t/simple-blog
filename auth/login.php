@@ -2,6 +2,34 @@
     require_once '../functions/helpers.php';
     require_once '../functions/pdo_connection.php';
 
+    session_start();
+
+    $error = "";
+    if(isset($_SESSION["user"])){
+        redirect("panel/post");
+    }
+
+    if (isset($_POST["email"]) && $_POST["email"] !== "" && isset($_POST["password"]) && $_POST['password'] !== '' ) {
+        $query = "SELECT * FROM users WHERE email = ?";
+        $stmt = $dbconnection->prepare($query);
+        $stmt->execute([$_POST["email"]]);
+        $user = $stmt->fetch();
+        if($user !== false){
+
+            if(password_verify($_POST["password"], $user->password)){
+                $_SESSION["user"] = $user->email;
+                redirect("/panel");
+            }else{
+                $error = "password is incorrect";
+            }
+        }
+
+    }else{
+        if(!empty($_POST)){
+            $error = "Please Fill inputs";
+        }
+    }
+
 
 ?>
 
@@ -24,7 +52,9 @@
         <section style="height: 100vh; background-color: #138496;" class="d-flex justify-content-center align-items-center">
             <section style="width: 20rem;">
                 <h1 class="bg-warning rounded-top px-2 mb-0 py-3 h5">PHP Tutorial login</h1>
-                <section class="bg-light my-0 px-2"><small class="text-danger"></small></section>
+                <section class="bg-light my-0 px-2"><small class="text-danger">
+                <?php if($error !== '') echo $error; ?>
+                </small></section>
                 <form class="pt-3 pb-1 px-2 bg-light rounded-bottom" action="" method="post">
                     <section class="form-group">
                         <label for="email">Email</label>
