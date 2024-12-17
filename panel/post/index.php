@@ -76,7 +76,7 @@
                                 <td>
                                     <a href="<?= url('/panel/post/change-status.php?id=' . $post->id); ?>" class="btn btn-warning btn-sm">Change status</a>
                                     <a href="<?= url('/panel/post/edit.php?id=' . $post->id); ?>" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="<?= url('/panel/post/delete.php?id=' . $post->id); ?>" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                                
                             </tr>
