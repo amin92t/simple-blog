@@ -24,9 +24,9 @@ require_once 'functions/pdo_connection.php';
 <?php
 
 global $dbconnection;
-         $query = "SELECT simple_blog.posts.* , simple_blog.categories.name AS category_name FROM posts LEFT JOIN categories ON posts.cat_id = categories.id WHERE status = 1 AND id = ?;";
+         $query = "SELECT simple_blog.posts.* , simple_blog.categories.name AS category_name FROM posts LEFT JOIN categories ON posts.cat_id = categories.id WHERE posts.status = 1 AND posts.id = ? ;";
          $stmt = $dbconnection->prepare($query);
-         $stmt->execute($GET["id"]);
+         $stmt->execute([$_GET["id"]]);
          $post = $stmt ->fetch();
          if($post !== false){
 ?>
